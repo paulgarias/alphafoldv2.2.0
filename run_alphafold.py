@@ -44,32 +44,32 @@ import numpy as np
 logging.set_verbosity(logging.INFO)
 
 
-alphafold_path = os.path.dirname(os.path.realpath(__file__))
-#Default: look in the alphafold path for the alphafold_data folder (or symmlink)
-data_dir = alphafold_path + "/alphafold_data"
-#data_dir =    #set it to the location of the alphafold_data or make a symmlink in the folder of this script.
-if not os.path.exists(data_dir):
-  print(f'data_dir={data_dir}')
-  print(f'Set the data_dir in {__file__} to the location of "alphafold_data" or make a symmlink to it in the {alphafold_path} folder')
-  sys.exit(1)
+# alphafold_path = os.path.dirname(os.path.realpath(__file__))
+# #Default: look in the alphafold path for the alphafold_data folder (or symmlink)
+# data_dir = alphafold_path + "/alphafold_data"
+# #data_dir =    #set it to the location of the alphafold_data or make a symmlink in the folder of this script.
+# if not os.path.exists(data_dir):
+#   print(f'data_dir={data_dir}')
+#   print(f'Set the data_dir in {__file__} to the location of "alphafold_data" or make a symmlink to it in the {alphafold_path} folder')
+#   sys.exit(1)
 
-DOWNLOAD_DIR= data_dir
-uniprot_database_path = os.path.join(
-    DOWNLOAD_DIR, 'uniprot',    'uniprot.fasta')
-uniref90_database_path = os.path.join(
-    DOWNLOAD_DIR, 'uniref90', 'uniref90.fasta')
-mgnify_database_path = os.path.join(
-    DOWNLOAD_DIR, 'mgnify', 'mgy_clusters.fa')
-small_bfd_database_path = os.path.join(
-    DOWNLOAD_DIR, 'small_bfd',    'bfd-first_non_consensus_sequences.fasta')
-bfd_database_path = os.path.join(
-    DOWNLOAD_DIR, 'bfd',    'bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt')
-uniclust30_database_path = os.path.join(
-    DOWNLOAD_DIR, 'uniclust30', 'UniRef30_2021_06', 'UniRef30_2021_06')
-pdb70_database_path = os.path.join(DOWNLOAD_DIR, 'pdb70', 'pdb70')
-template_mmcif_dir = os.path.join(DOWNLOAD_DIR, 'pdb_mmcif', 'mmcif_files')
-obsolete_pdbs_path = os.path.join(DOWNLOAD_DIR, 'pdb_mmcif', 'obsolete.dat')
-pdb_seqres_database_path=os.path.join(DOWNLOAD_DIR, 'pdb_seqres', 'pdb_seqres.txt')
+# DOWNLOAD_DIR= data_dir
+# uniprot_database_path = os.path.join(
+#     DOWNLOAD_DIR, 'uniprot',    'uniprot.fasta')
+# uniref90_database_path = os.path.join(
+#     DOWNLOAD_DIR, 'uniref90', 'uniref90.fasta')
+# mgnify_database_path = os.path.join(
+#     DOWNLOAD_DIR, 'mgnify', 'mgy_clusters.fa')
+# small_bfd_database_path = os.path.join(
+#     DOWNLOAD_DIR, 'small_bfd',    'bfd-first_non_consensus_sequences.fasta')
+# bfd_database_path = os.path.join(
+#     DOWNLOAD_DIR, 'bfd',    'bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt')
+# uniclust30_database_path = os.path.join(
+#     DOWNLOAD_DIR, 'uniclust30', 'UniRef30_2021_06', 'UniRef30_2021_06')
+# pdb70_database_path = os.path.join(DOWNLOAD_DIR, 'pdb70', 'pdb70')
+# template_mmcif_dir = os.path.join(DOWNLOAD_DIR, 'pdb_mmcif', 'mmcif_files')
+# obsolete_pdbs_path = os.path.join(DOWNLOAD_DIR, 'pdb_mmcif', 'obsolete.dat')
+# pdb_seqres_database_path=os.path.join(DOWNLOAD_DIR, 'pdb_seqres', 'pdb_seqres.txt')
 
 
 
@@ -81,7 +81,7 @@ flags.DEFINE_list(
     'separated by commas. All FASTA paths must have a unique basename as the '
     'basename is used to name the output directories for each prediction.')
 
-#flags.DEFINE_string('data_dir', None, 'Path to directory of supporting data.')
+flags.DEFINE_string('data_dir', None, 'Path to directory of supporting data.')
 flags.DEFINE_string('output_dir', None, 'Path to a directory that will '
                     'store the results.')
 flags.DEFINE_string('jackhmmer_binary_path', shutil.which('jackhmmer'),
