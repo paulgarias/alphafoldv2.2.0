@@ -96,9 +96,9 @@ flags.DEFINE_string('hmmbuild_binary_path', shutil.which('hmmbuild'),
                     'Path to the hmmbuild executable.')
 flags.DEFINE_string('kalign_binary_path', shutil.which('kalign'),
                     'Path to the Kalign executable.')
-flags.DEFINE_string('uniref90_database_path', uniref90_database_path, 'Path to the Uniref90 '
+flags.DEFINE_string('uniref90_database_path', None, 'Path to the Uniref90 '
                     'database for use by JackHMMER.')
-flags.DEFINE_string('mgnify_database_path', mgnify_database_path, 'Path to the MGnify '
+flags.DEFINE_string('mgnify_database_path', None, 'Path to the MGnify '
                     'database for use by JackHMMER.')
 flags.DEFINE_string('bfd_database_path', None, 'Path to the BFD '
                     'database for use by HHblits.')
@@ -112,11 +112,11 @@ flags.DEFINE_string('pdb70_database_path', None, 'Path to the PDB70 '
                     'database for use by HHsearch.')
 flags.DEFINE_string('pdb_seqres_database_path', None, 'Path to the PDB '
                     'seqres database for use by hmmsearch.')
-flags.DEFINE_string('template_mmcif_dir', template_mmcif_dir, 'Path to a directory with '
+flags.DEFINE_string('template_mmcif_dir', None, 'Path to a directory with '
                     'template mmCIF structures, each named <pdb_id>.cif')
-flags.DEFINE_string('max_template_date', '2050-01-01', 'Maximum template release date '
+flags.DEFINE_string('max_template_date', None, 'Maximum template release date '
                     'to consider. Important if folding historical test sets.')
-flags.DEFINE_string('obsolete_pdbs_path', obsolete_pdbs_path, 'Path to file containing a '
+flags.DEFINE_string('obsolete_pdbs_path', None, 'Path to file containing a '
                     'mapping from obsolete PDB IDs to the PDB IDs of their '
                     'replacements.')
 flags.DEFINE_enum('db_preset', 'full_dbs',
@@ -124,8 +124,7 @@ flags.DEFINE_enum('db_preset', 'full_dbs',
                   'Choose preset MSA database configuration - '
                   'smaller genetic database config (reduced_dbs) or '
                   'full genetic database config  (full_dbs)')
-flags.DEFINE_enum('model_preset', 'monomer',config.MODEL_PRESETS.keys(), #presets are defined in the config/BW
-                  #['monomer', 'monomer_casp14', 'monomer_ptm', 'multimer','multimer_v1','multimer_v2','multimer_all'],
+flags.DEFINE_enum('model_preset', 'monomer', ['monomer', 'monomer_casp14', 'monomer_ptm', 'multimer','multimer_v1','multimer_v2','multimer_all'],
                   'Choose preset model configuration - the monomer model, '
                   'the monomer model with extra ensembling, monomer model with '
                   'pTM head, multimer model (v2), or specify which of the multimer models to use _v1, _v2, or _all')
@@ -139,11 +138,11 @@ flags.DEFINE_integer('random_seed', None, 'The random seed for the data '
                      'deterministic, because processes like GPU inference are '
                      'nondeterministic.')
 #Flag replaced by -nstruct for all model_presets /BW
-#flags.DEFINE_integer('num_multimer_predictions_per_model', 5, 'How many '
-#                     'predictions (each with a different random seed) will be '
-#                     'generated per model. E.g. if this is 2 and there are 5 '
-#                     'models then there will be 10 predictions per input. '
-#                     'Note: this FLAG only applies if model_preset=multimer')
+flags.DEFINE_integer('num_multimer_predictions_per_model', 5, 'How many '
+                    'predictions (each with a different random seed) will be '
+                    'generated per model. E.g. if this is 2 and there are 5 '
+                    'models then there will be 10 predictions per input. '
+                    'Note: this FLAG only applies if model_preset=multimer')
 flags.DEFINE_integer('nstruct', 1, 'How many '
                      'predictions (each with a different random seed) will be '
                      'generated per model. E.g. if this is 2 and there are 5 '
