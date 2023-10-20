@@ -468,7 +468,7 @@ def main(argv):
     
       
     model_params = data.get_model_haiku_params(
-        model_name=model_name, data_dir=data_dir)
+        model_name=model_name, data_dir=FLAGS.data_dir)
     model_runner = model.RunModel(model_config, model_params,is_training=FLAGS.dropout)
     for i in range(FLAGS.nstruct_start,FLAGS.nstruct+1):#num_predictions_per_model):
       model_runners[f'{model_name}_{FLAGS.suffix}_{i}'] = model_runner
